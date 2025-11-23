@@ -12,41 +12,23 @@ It supports end‑to‑end user flow including:
 - Ticket Cancellation  
 - Airline & Flight Inventory Management  
 - Validation + Error Handling  
-- Concurrent seat booking protection  
 - JUnit + WebFluxTest + Mockito test coverage  
 - Load testing using JMeter
 
 ---
 
-## 🧰 Tech Stack  
-**Backend Framework:** Spring Boot (WebFlux)  
-**Database:** MongoDB (Reactive)  
-**Language:** Java 17  
-**Build Tool:** Maven  
-**Testing:**  
-- JUnit 5  
-- Mockito  
-- WebTestClient  
-- Reactor StepVerifier  
-- Jacoco (Coverage Report > 85%)  
+## Modules Implemented
 
-**Load Testing:**  
-- Apache JMeter (Sequential seat booking test)
-
----
-
-## 📦 Modules Implemented
-
-### ✔ Airline Management  
+### Airline Management  
 - Create airline (auto‑created if not existing during inventory add)
 
-### ✔ Flight Inventory  
+### Flight Inventory  
 - Add flight schedule  
 - Maintain available seats  
 - Maintain seat map (`S001 … S150`)  
 - Prevent duplicate airline + flight number combinations  
 
-### ✔ Booking System  
+### Booking System  
 - Book ticket  
 - Validate seats  
 - Prevent double booking  
@@ -55,13 +37,13 @@ It supports end‑to‑end user flow including:
 - Update seat map  
 - Reduce available seats  
 
-### ✔ Ticket Retrieval  
+### Ticket Retrieval  
 - Fetch booking details by PNR  
 
-### ✔ Booking History  
+### Booking History  
 - Fetch bookings by email  
 
-### ✔ Ticket Cancellation  
+### Ticket Cancellation  
 - Allowed only >= 24 hours before flight  
 - Marks booking as cancelled  
 - Frees seat numbers  
@@ -69,11 +51,11 @@ It supports end‑to‑end user flow including:
 
 ---
 
-# 📡 REST API Endpoints
+# REST API Endpoints
 
 ---
 
-## 1️⃣ Add Inventory (Admin)
+## 1. Add Inventory (Admin)
 ### **POST**  
 `http://localhost:8080/api/flight/airline/inventory/add`
 
@@ -93,7 +75,7 @@ It supports end‑to‑end user flow including:
 
 ---
 
-## 2️⃣ Search Flights  
+## 2️. Search Flights  
 ### **POST**  
 `http://localhost:8080/api/flight/search`
 
@@ -106,7 +88,7 @@ It supports end‑to‑end user flow including:
 
 ---
 
-## 3️⃣ Book Flight  
+## 3️. Book Flight  
 ### **POST**  
 `http://localhost:8080/api/flight/booking/{flightId}`  
 Example:  
@@ -127,59 +109,30 @@ Example:
 
 ---
 
-## 4️⃣ Get Ticket by PNR  
+## 4️. Get Ticket by PNR  
 ### **GET**  
 `http://localhost:8080/api/flight/ticket/587AD95532`
 
 ---
 
-## 5️⃣ Booking History  
+## 5️. Booking History  
 ### **GET**  
 `http://localhost:8080/api/flight/booking/history/bhavana@gmail.com`
 
 ---
 
-## 6️⃣ Cancel Ticket  
+## 6️. Cancel Ticket  
 ### **DELETE**  
 `http://localhost:8080/api/flight/booking/cancel/587AD95532`
 
 ---
 
-# 🧪 Testing Setup
-
-### Unit Tests
-- BookingService  
-- InventoryService  
-- FlightController  
-- Seat map logic  
-- Cancellation rules  
-
-### Jacoco  
-Coverage achieved: **85%+**
-
----
-
-# ⚡ Load Testing (JMeter)
-
-Sequential seat booking (S001 to S100)
-Counter config:
-- Start: 1  
-- Increment: 1  
-- Format: `S%03d`
-
-Works with:
-"seatNumbers": ["${seatNo}"]
-
----
-
-# 🎯 Final Outcome
+# Final Outcome
 
 A full‑featured **Reactive Flight Booking System** with:
-- High performance non‑blocking APIs  
 - Validation & business logic  
 - Airline + inventory module  
 - Booking + cancellation  
 - JUnit + Jacoco + WebFlux tests  
 - JMeter tested  
-- Production‑ready backend  
 
